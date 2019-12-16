@@ -1,8 +1,8 @@
 #version 450
 
-in layout(location=0) vec3 pos;
+in layout(location=0) vec4 pos;
 
 void main(void)
 {
-	gl_Position = vec4(pos, 1.0);
+	gl_Position = pos;
 }

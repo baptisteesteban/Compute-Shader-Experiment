@@ -120,14 +120,14 @@ GLuint init_compute_shader(void)
  */
 void init_buffers(void)
 {
-  GLfloat data[] = {0.0f, 0.0f, 0.0f};
+  GLfloat data[] = {0.0f, 0.0f, 0.0f, 1.0f, 0.5f, 0.0f, 0.0f, 1.0f};
   glGenVertexArrays(1, &vao);
   glBindVertexArray(vao);
   GLuint vbo;
   glGenBuffers(1, &vbo);
   glBindBuffer(GL_ARRAY_BUFFER, vbo);
-  glBufferData(GL_ARRAY_BUFFER, 3 * sizeof(GLfloat), data, GL_DYNAMIC_DRAW);
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+  glBufferData(GL_ARRAY_BUFFER, 8 * sizeof(GLfloat), data, GL_DYNAMIC_DRAW);
+  glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0);
   glEnableVertexAttribArray(0);
   glBindVertexArray(0);
   glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 0, vbo);
@@ -140,7 +140,7 @@ void draw(GLuint program)
 {
   glUseProgram(program);
   glBindVertexArray(vao);
-  glDrawArrays(GL_POINTS, 0, 1);
+  glDrawArrays(GL_POINTS, 0, 2);
   glBindVertexArray(0);
 }
 
